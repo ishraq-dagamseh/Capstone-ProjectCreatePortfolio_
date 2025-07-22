@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishraq Al-Dagamseh Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+      color: #0a1f44; /* Dark blue for main text */
+    }
+    header {
+      background-color: #072b4f;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header img {
+      height: 60px;
+    }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1589831265250-89d3d36e19d2?auto=format&fit=crop&w=1740&q=80') no-repeat center center/cover;
+      color: #0a1f44; /* Dark blue text on hero */
+      text-align: center;
+      padding: 4rem 2rem;
+      text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+    }
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .hero-content {
+      position: relative;
+      max-width: 900px;
+      margin: auto;
+      background-color: rgba(240, 248, 255, 0.85);
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      color: #0a1f44;
+      text-shadow: none;
+      animation: fadeSlideUp 1s ease-out forwards;
+    }
+    /* Watermark as pseudo-element behind hero-content text */
+    .hero-content::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 180px;       /* bigger */
+      height: 180px;      /* bigger */
+      background-image: url('Personal Brand Logo with Deep Blue and Green.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0.18;      /* increased opacity */
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+      filter: contrast(1.2); /* slightly boost contrast */
+    }
+    .hero-content > * {
+      position: relative;
+      z-index: 1; /* content above watermark */
+    }
+    .hero-content h1 {
+      color: #061533;
+      text-shadow: 1px 1px 5px rgba(255,255,255,0.85);
+      margin-bottom: 0.5rem;
+    }
+    .hero-content p {
+      max-width: 900px;
+      margin: 0.3rem auto;
+      color: #0a1f44;
+      text-shadow: none;
+    }
+    .icons {
+      margin-top: 1rem;
+      font-size: 1.8rem;
+    }
+    .icons a {
+      margin: 0 10px;
+      color: #064273; /* Deep blue icons */
+      transition: color 0.3s ease;
+    }
+    .icons a:hover {
+      color: #0a3d62;
+    }
+    .btn {
+      background-color: #005792;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 2rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+    section {
+      position: relative;
+      padding: 3rem 0;
+      background-size: cover;
+      background-position: center;
+      color: #0a1f44; /* Dark blue text */
+      text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.8);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .content-wrapper {
+      max-width: 900px;
+      margin: auto;
+      background-color: rgba(240, 248, 255, 0.85);
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      color: #0a1f44;
+      text-shadow: none;
+    }
+    .content-wrapper h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #0a1f44;
+      text-shadow: none;
+    }
+    .content-wrapper ul {
+      padding-left: 1rem;
+      color: #0a1f44;
+      text-shadow: none;
+    }
+    .content-wrapper p {
+      color: #0a1f44;
+      text-shadow: none;
+    }
+    #about {
+      background-image: url('https://images.unsplash.com/photo-1573496771931-1f61d2bbca56?auto=format&fit=crop&w=1740&q=80');
+    }
+    #skills {
+      background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1740&q=80');
+    }
+    #projects {
+      background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1740&q=80');
+    }
+    #publications {
+      background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1740&q=80');
+    }
+    #contact {
+      background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1740&q=80');
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #022136;
+      color: white;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 0.7rem;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #0a1f44;
+      text-shadow: none;
+    }
+    ul li i {
+      color: #064273;
+      min-width: 20px;
+      text-align: center;
+    }
+    #contact a {
+      color: #064273;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+    #contact a:hover {
+      color: #0a3d62;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Personal Brand Logo with Deep Blue and Green.png" alt="Ishraq Logo" />
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero visible" style="padding:4rem 2rem;">
+    <div class="hero-content">
+      <h1>Ishraq Tariq Al-Dagamseh</h1>
+      <p>
+        AI & Data Science Educator <i class="fas fa-brain"></i> | 
+        Computer Science Lecturer <i class="fas fa-chalkboard-teacher"></i> | 
+        ML Researcher <i class="fas fa-flask"></i> | 
+        Researcher <i class="fas fa-microscope"></i> | 
+        Woman in STEM <i class="fas fa-user-nurse"></i>
+      </p>
+      <p>
+        Hello! I'm passionate about AI, data science, and computer science education. Explore my work, certifications, and research.
+      </p>
+    </div>
+    <div class="icons">
+      <a href="https://github.com/ishraq-dagamseh" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/ishraq-t-al-dagamseh-51aa7a20a" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:ishraq500@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.instagram.com/artificial_intelligence_info24" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.kaggle.com/ishraqdagamseh" target="_blank" aria-label="Kaggle"><i class="fab fa-kaggle"></i></a>
+    </div>
+    <a class="btn" href="Ishraq's CV025_AI_DataScience.pdf" download>Download CV</a>
+  </section>
+
+  <section id="about" style="background-image: url('https://images.unsplash.com/photo-1573496771931-1f61d2bbca56?auto=format&fit=crop&w=1740&q=80');">
+    <div class="content-wrapper">
+      <h2>About Me</h2>
+      <p>
+        I'm a Computer Science Lecturer with a Master's in Computer Science. I specialize in AI, Data Science, and Machine Learning. I love transforming theoretical concepts into real-world applications through research and hands-on projects.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1740&q=80');">
+    <div class="content-wrapper">
+      <h2>Skills</h2>
+      <ul>
+        <li><i class="fas fa-code"></i> Python, Java, SQL</li>
+        <li><i class="fas fa-cogs"></i> TensorFlow, Keras, PyTorch, Scikit-learn</li>
+        <li><i class="fas fa-robot"></i> YOLOv8, Computer Vision, Object Detection</li>
+        <li><i class="fas fa-chart-bar"></i> Data Analysis, Pandas, NumPy, Visualization</li>
+        <li><i class="fas fa-brain"></i> Deep Learning, Neural Networks, Reinforcement Learning</li>
+        <li><i class="fas fa-flask"></i> Research, Experimentation, Publications</li>
+        <li><i class="fas fa-graduation-cap"></i> Education, Curriculum Development</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1740&q=80');">
+    <div class="content-wrapper">
+      <h2>Projects</h2>
+      <ul>
+        <li>🏛️ Historical Places Predictor (CNN, Gradio, Hugging Face)</li>
+        <li>💵 Jordanian Currencies Object Detector (YOLOv8, Roboflow)</li>
+        <li>🚢 Titanic Survival Predictor (Kaggle)</li>
+        <li>🏡 House Price Predictor (Kaggle)</li>
+        <li>🚗 Vehicle Insurance Classifier (Kaggle)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="publications" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1740&q=80');">
+    <div class="content-wrapper">
+      <h2>Publications</h2>
+      <ul>
+        <li>📄 Al-Taani, A. T., & Al-Dagamseh, I. T. (2023). Automatic detection of pneumonia using concatenated convolutional neural network. Jordanian Journal of Computers and Information
+Technology (JJCIT), 9(2), 118-136.</li>
+        <li>📄 Al-Khatib, R. M., Al-Khateeb, A., Al-Daom, E., Al-Dagamseh, I. T., Tawalbeh, A., & Abualigah,
+L. (2023). A new enhanced IGBT-based model for CPU scheduling. Proceedings of the 2023
+International Conference on Software Engineering and Machine Learning.</li>
+      </ul>
+    </div>
+  </section>
+
+
+
+  <section id="contact" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1740&q=80');">
+    <div class="content-wrapper">
+      <h2>Contact</h2>
+      <p style="text-align: center;">
+        Email: <a href="mailto:ishraq500@gmail.com">ishraq500@gmail.com</a><br />
+        GitHub: <a href="https://github.com/ishraq-dagamseh" target="_blank">github.com/ishraq-dagamseh</a><br />
+        Kaggle: <a href="https://www.kaggle.com/ishraqdagamseh" target="_blank">kaggle.com/ishraqdagamseh</a><br />
+        LinkedIn: <a href="https://www.linkedin.com/in/ishraq-t-al-dagamseh-51aa7a20a" target="_blank">linkedin.com/in/ishraq-t-al-dagamseh</a><br />
+        Instagram: <a href="https://www.instagram.com/artificial_intelligence_info24" target="_blank">@artificial_intelligence_info24</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ishraq Tariq Al-Dagamseh. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function isInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 100;
+    }
+
+    function checkSections() {
+      document.querySelectorAll('section').forEach(section => {
+        if (isInViewport(section)) {
+          section.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', checkSections);
+    window.addEventListener('load', checkSections);
+  </script>
+</body>
+</html>
