@@ -82,9 +82,52 @@ nav ul li a {
     overflow: visible; /* Show overflowing content */
 }
 
+
+
 footer {
     text-align: center;
     padding: 1rem 0;
     background: #35424a;
     color: #ffffff;
+}
+
+
+/* ========== MEDIA QUERIES FOR RESPONSIVENESS ========== */
+
+/* For tablets and smaller */
+@media (max-width: 992px) {
+    .content-wrapper {
+        width: 90%;
+        min-width: unset; /* Remove fixed min-width */
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    header {
+        padding: 3rem 1rem;
+        background-size: cover;
+    }
+}
+
+/* For mobile devices */
+@media (max-width: 600px) {
+    nav ul li {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    .content-wrapper {
+        width: 95%;
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    header {
+        padding: 2rem 1rem;
+        text-shadow: none;
+    }
+
+    body {
+        padding: 0 5px;
+    }
 }
